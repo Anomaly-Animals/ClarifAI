@@ -11,5 +11,5 @@ export const showAlert = () => {
 
 	setTimeout(() => {
 		dashboardState.shouldShowAlert = false;
-	}, 3000);
+	}, 2000);
 };
