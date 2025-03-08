@@ -4,12 +4,17 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 	import type { Booking } from '$lib/domain/Booking';
 	import { showAlert } from '$lib/state/dashboardState.svelte';
+	import { goto } from '$app/navigation';
 
 	let { documentNumber }: Pick<Booking, 'documentNumber'> = $props();
 
 	const handleCopy = () => {
 		navigator.clipboard.writeText(documentNumber);
 		showAlert();
+	};
+
+	const handleNavigation = () => {
+		goto(`/anomalyzer?documentNumber=${documentNumber}`);
 	};
 </script>
 
@@ -28,6 +33,6 @@
 			<DropdownMenu.Item onclick={handleCopy}>Copy document number</DropdownMenu.Item>
 		</DropdownMenu.Group>
 		<DropdownMenu.Separator />
-		<DropdownMenu.Item>View suspicion analysis</DropdownMenu.Item>
+		<DropdownMenu.Item onclick={handleNavigation}>View suspicion analysis</DropdownMenu.Item>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>

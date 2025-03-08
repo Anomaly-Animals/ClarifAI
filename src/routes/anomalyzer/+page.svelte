@@ -1,27 +1,39 @@
 <script lang="ts">
 	import LoadingSpinner from '$lib/components/layout/LoadingSpinner.svelte';
-	import { anomalyzerState, clearAnomalyzerState } from '$lib/state/anomalyzerState.svelte';
-	import { onMount } from 'svelte';
+	import {
+		anomalyzerState,
+		clearAnomalyzerState,
+		initializeAnomalyzerState
+	} from '$lib/state/anomalyzerState.svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import SearchWidget from './SearchWidget.svelte';
 	import { fade } from 'svelte/transition';
 	import * as Alert from '$lib/components/ui/alert/index.js';
-	import { Check, Cross, X } from 'lucide-svelte';
+	import { X } from 'lucide-svelte';
+	import { page } from '$app/state';
+	import DocumentBreakdown from './DocumentBreakdown.svelte';
 
 	onMount(() => {
+		const documentNumber = page.url.searchParams.get('documentNumber');
+		initializeAnomalyzerState(documentNumber);
+	});
+
+	onDestroy(() => {
 		clearAnomalyzerState();
 	});
 </script>
 
 <div class="flex h-full w-full flex-col items-center justify-center">
-	{#if anomalyzerState.pageLoading}
+	{#if anomalyzerState.searchSuccessful}
+		<DocumentBreakdown />
+		<SearchWidget shouldShowOnBottom />
+	{:else if anomalyzerState.pageLoading}
 		<div class="flex flex-1 items-center">
 			<LoadingSpinner />
 		</div>
 		<SearchWidget shouldShowTransition shouldShowOnBottom />
-	{:else if !anomalyzerState.pageLoading && !anomalyzerState.searchSuccessful}
-		<SearchWidget />
 	{:else}
-		<SearchWidget shouldShowOnBottom />
+		<SearchWidget />
 	{/if}
 </div>
 

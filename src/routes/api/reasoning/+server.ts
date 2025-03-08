@@ -5,7 +5,6 @@ import type { ReasoningRequest } from '$lib/domain/ReasoningRequest';
 
 export const GET: RequestHandler = async ({ url, fetch }) => {
 	const documentNumber = url.searchParams.get('documentNumber');
-	console.log(documentNumber);
 
 	const requestBody: ReasoningRequest = {
 		anomaly_belnr: documentNumber || ''
@@ -20,9 +19,7 @@ export const GET: RequestHandler = async ({ url, fetch }) => {
 	});
 
 	if (!response.ok) {
-		console.log(response);
 		const error = 'Something went wrong';
-
 		return json(error, { status: 500 });
 	}
 

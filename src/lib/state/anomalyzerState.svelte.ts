@@ -22,6 +22,16 @@ export const anomalyzerState: AnomalyzerState = $state({
 });
 
 // Function to clear/reset the state to initial values
+export const initializeAnomalyzerState = (documentNumber: string | null): void => {
+	anomalyzerState.pageLoading = false;
+	anomalyzerState.mountedOnBottom = false;
+	anomalyzerState.searchSuccessful = false;
+	anomalyzerState.faultyState = false;
+	anomalyzerState.showApiError = false;
+	anomalyzerState.documentNumber = documentNumber || '';
+	anomalyzerState.reasonings = undefined;
+};
+
 export const clearAnomalyzerState = (): void => {
 	anomalyzerState.pageLoading = false;
 	anomalyzerState.mountedOnBottom = false;

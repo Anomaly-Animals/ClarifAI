@@ -25,7 +25,7 @@ export const columns: ColumnDef<Booking>[] = [
 	},
 	{
 		accessorKey: 'postingKey',
-		header: 'PostingKey'
+		header: 'Posting Key'
 	},
 	{
 		accessorKey: 'generalLedgerAccount',

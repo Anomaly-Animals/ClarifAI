@@ -58,19 +58,22 @@
 			}
 		);
 
-		setTimeout(async () => {
-			anomalyzerState.pageLoading = false;
-			anomalyzerState.mountedOnBottom = true;
+		setTimeout(
+			async () => {
+				anomalyzerState.pageLoading = false;
+				anomalyzerState.mountedOnBottom = true;
 
-			if (!response.ok) {
-				anomalyzerState.searchSuccessful = false;
-				showApiError();
-				return;
-			}
+				if (!response.ok) {
+					anomalyzerState.searchSuccessful = false;
+					showApiError();
+					return;
+				}
 
-			anomalyzerState.searchSuccessful = true;
-			anomalyzerState.reasonings = await response.json();
-		}, 500); // Delay for 500ms to allow the transition to complete
+				anomalyzerState.reasonings = await response.json();
+				anomalyzerState.searchSuccessful = true;
+			},
+			anomalyzerState.mountedOnBottom ? 0 : 500
+		); // Delay for 500ms to allow the transition to complete
 	};
 
 	const {
