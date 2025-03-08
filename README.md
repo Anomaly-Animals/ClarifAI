@@ -1,38 +1,67 @@
+![Anomaly Reasoning](static/ClarifAI_logo.png)
+
 # sv
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Welcome to **sv**! Everything you need to build a **Svelte** project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+## 🚀 Creating a Project
 
-```bash
-# create a new project in the current directory
-npx sv create
+If you're seeing this, you’ve probably already completed this step—congrats! 🎉
 
-# create a new project in my-app
-npx sv create my-app
-```
+To create a new Svelte project, use the following commands:
 
-## Developing
+1. **Create a new project in the current directory:**
+    ```bash
+    npx sv create
+    ```
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+2. **Create a new project in a specific directory (e.g., `my-app`):**
+    ```bash
+    npx sv create my-app
+    ```
+
+---
+
+## 🖥️ Developing
+
+Once you've created your project and installed the necessary dependencies, you can start developing! To install dependencies, use your preferred package manager:
+
+- `npm install`
+- `pnpm install`
+- `yarn`
+
+Then, start the development server:
 
 ```bash
 npm run dev
+```
 
-# or start the server and open the app in a new browser tab
+### Optional: Open the app automatically in a new browser tab
+```bash
 npm run dev -- --open
 ```
 
-## Building
+---
 
-To create a production version of your app:
+## ⚙️ Building for Production
+
+To create a production version of your app, simply run:
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+### Previewing the Production Build
+You can preview the production build locally by running:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+npm run preview
+```
+
+---
+
+## 📦 Deploying Your App
+
+To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) that fits your target environment. For detailed deployment steps, refer to the Svelte documentation.
